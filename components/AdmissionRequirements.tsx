@@ -1,4 +1,4 @@
-import { ShieldCheck, Syringe, Bug, HeartHandshake, CheckCircle2, AlertCircle } from "lucide-react";
+import { ShieldCheck, Syringe, Bug, HeartHandshake, AlertCircle } from "lucide-react";
 
 export default function AdmissionRequirements() {
   const requirements = [

@@ -3,11 +3,6 @@
 import {
   ArrowRight,
   Phone,
-  Clock,
-  Sparkles,
-  ShieldCheck,
-  CheckCircle2,
-  Wind,
 } from "lucide-react";
 
 interface HeroProps {

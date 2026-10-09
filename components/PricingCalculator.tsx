@@ -6,7 +6,6 @@ import {
   Clock,
   CheckCircle2,
   Calendar as CalendarIcon,
-  Sparkles,
   Phone,
   Copy,
   Check,
@@ -16,9 +15,6 @@ import {
   Wind,
   Trees,
   Video,
-  ArrowRight,
-  Sliders,
-  CalendarCheck,
 } from "lucide-react";
 import {
   SettingsConfig,

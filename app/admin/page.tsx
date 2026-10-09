@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import {
   signInWithPopup,
@@ -23,7 +22,6 @@ import {
   createGoogleCalendarUrl,
 } from "@/lib/bookings";
 import {
-  getAuthorizedAdmins,
   subscribeAuthorizedAdmins,
   addAdminEmail,
   removeAdminEmail,
@@ -35,7 +33,6 @@ import {
   DollarSign,
   Users,
   CheckCircle2,
-  XCircle,
   AlertCircle,
   Lock,
   Unlock,
@@ -45,11 +42,8 @@ import {
   ChevronLeft,
   ChevronRight,
   Search,
-  Filter,
-  Sparkles,
   Phone,
   Save,
-  RefreshCw,
   Sliders,
   CalendarCheck,
   ListOrdered,
@@ -150,14 +144,15 @@ export default function AdminPage() {
     setIsSigningIn(true);
     try {
       await signInWithPopup(auth, googleProvider);
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error(err);
-      if (err.code === "auth/popup-closed-by-user") {
+      const error = err as { code?: string; message?: string };
+      if (error.code === "auth/popup-closed-by-user") {
         setAuthError("Inicio de sesión cancelado en la ventana emergente.");
-      } else if (err.code === "auth/operation-not-allowed") {
+      } else if (error.code === "auth/operation-not-allowed") {
         setAuthError("El proveedor de Google no está habilitado en tu Firebase Console. Sigue el instructivo en context/INSTRUCTIVO_REGLAS_FIREBASE.md para activarlo.");
       } else {
-        setAuthError(err.message || "Error al autenticar con Google.");
+        setAuthError(error.message || "Error al autenticar con Google.");
       }
     } finally {
       setIsSigningIn(false);
@@ -178,8 +173,9 @@ export default function AdminPage() {
       setAdminActionMsg(`¡Administrador ${newAdminInput} agregado con éxito!`);
       setNewAdminInput("");
       setTimeout(() => setAdminActionMsg(""), 3000);
-    } catch (err: any) {
-      alert(err.message || "Error al agregar administrador.");
+    } catch (err: unknown) {
+      const error = err as { message?: string };
+      alert(error.message || "Error al agregar administrador.");
     }
   };
 
@@ -188,8 +184,9 @@ export default function AdminPage() {
     if (confirm(`¿Seguro que deseas revocar los permisos de ${emailToRemove}?`)) {
       try {
         await removeAdminEmail(emailToRemove);
-      } catch (err: any) {
-        alert(err.message || "No se puede eliminar este administrador.");
+      } catch (err: unknown) {
+        const error = err as { message?: string };
+        alert(error.message || "No se puede eliminar este administrador.");
       }
     }
   };

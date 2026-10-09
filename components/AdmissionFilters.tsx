@@ -6,13 +6,11 @@ import {
   Bug,
   HeartHandshake,
   AlertTriangle,
-  CheckCircle2,
   XCircle,
   Sparkles,
   Utensils,
   Phone,
   Flame,
-  Check,
 } from "lucide-react";
 
 export default function AdmissionFilters() {

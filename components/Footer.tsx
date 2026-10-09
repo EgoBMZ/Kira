@@ -3,10 +3,7 @@ import Link from "next/link";
 import {
   MapPin,
   Phone,
-  Clock,
-  Heart,
   ShieldCheck,
-  CheckCircle2,
 } from "lucide-react";
 
 export default function Footer() {

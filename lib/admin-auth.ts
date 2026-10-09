@@ -1,8 +1,6 @@
 import { doc, getDoc, setDoc, onSnapshot } from "firebase/firestore";
 import { db, SUPER_ADMIN_EMAIL } from "./firebase";
 
-const ADMINS_DOC = "config/admins";
-
 export interface AdminsData {
   superAdmin: string;
   admins: string[]; // Lista de correos autorizados adicionales

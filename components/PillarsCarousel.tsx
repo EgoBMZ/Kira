@@ -6,8 +6,6 @@ import {
   Wind,
   Trees,
   Video,
-  ShieldCheck,
-  CheckCircle2,
 } from "lucide-react";
 
 export default function PillarsCarousel() {
@@ -83,7 +81,6 @@ export default function PillarsCarousel() {
         {/* 4 Soft Pastel Pill Cards Grid (inspired by Pet Services Mobile UX) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
           {pillars.map((pillar, index) => {
-            const Icon = pillar.icon;
             return (
               <div
                 key={pillar.id}

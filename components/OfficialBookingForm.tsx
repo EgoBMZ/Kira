@@ -5,19 +5,12 @@ import {
   Send,
   Phone,
   CheckCircle2,
-  Calendar,
   Sparkles,
-  ShieldCheck,
-  User,
   Clock,
   ArrowRight,
   ArrowLeft,
-  Heart,
   CalendarPlus,
   AlertTriangle,
-  Check,
-  Utensils,
-  MapPin,
   FileCheck,
 } from "lucide-react";
 import { createBooking, createGoogleCalendarUrl } from "@/lib/bookings";
@@ -126,11 +119,11 @@ export default function OfficialBookingForm() {
     if (step === 2 && !durationEstimate.valid) {
       return;
     }
-    if (step < 3) setStep((s) => (s + 1) as any);
+    if (step < 3) setStep((s) => (s === 1 ? 2 : 3));
   };
 
   const prevStep = () => {
-    if (step > 1) setStep((s) => (s - 1) as any);
+    if (step > 1) setStep((s) => (s === 3 ? 2 : 1));
   };
 
   // Formato de WhatsApp limpio, universal y sin caracteres corruptos

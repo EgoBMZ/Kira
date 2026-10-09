@@ -6,11 +6,11 @@ import {
   Check,
   Sparkles,
   Phone,
-  ShieldCheck,
   Truck,
-  Heart,
   Calendar,
 } from "lucide-react";
+
+type PlanKey = "day" | "2days" | "3days" | "full" | "hotel";
 
 interface PlanCalculatorProps {
   onOpenBooking: () => void;
@@ -142,16 +142,16 @@ export default function PlanCalculator({ onOpenBooking }: PlanCalculatorProps) {
                 </label>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                   {[
-                    { key: "day", label: "Pasadía Libre", sub: "1 día" },
-                    { key: "2days", label: "2 Días / Sem", sub: "8 días/mes" },
-                    { key: "3days", label: "3 Días / Sem ⭐", sub: "12 días/mes" },
-                    { key: "full", label: "Mes Completo", sub: "Lun a Vie" },
-                    { key: "hotel", label: "Hospedaje Hotel", sub: "Por noche" },
+                    { key: "day" as PlanKey, label: "Pasadía Libre", sub: "1 día" },
+                    { key: "2days" as PlanKey, label: "2 Días / Sem", sub: "8 días/mes" },
+                    { key: "3days" as PlanKey, label: "3 Días / Sem ⭐", sub: "12 días/mes" },
+                    { key: "full" as PlanKey, label: "Mes Completo", sub: "Lun a Vie" },
+                    { key: "hotel" as PlanKey, label: "Hospedaje Hotel", sub: "Por noche" },
                   ].map((p) => (
                     <button
                       key={p.key}
                       type="button"
-                      onClick={() => setPlanType(p.key as any)}
+                      onClick={() => setPlanType(p.key)}
                       className={`p-3 rounded-2xl text-left border transition-all cursor-pointer ${
                         planType === p.key
                           ? "bg-sky-50 border-sky-500 text-sky-900 ring-2 ring-sky-500/20 shadow-sm"

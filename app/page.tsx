@@ -12,7 +12,7 @@ import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 import BookingModal from "@/components/BookingModal";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
-import { Sparkles, Calendar, Phone, ArrowRight, ShieldCheck } from "lucide-react";
+import { Sparkles, Calendar, Phone } from "lucide-react";
 
 export default function Home() {
   const [isBookingOpen, setIsBookingOpen] = useState(false);

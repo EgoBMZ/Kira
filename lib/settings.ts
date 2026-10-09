@@ -25,8 +25,6 @@ export const DEFAULT_SETTINGS: SettingsConfig = {
   workingDays: [0, 1, 2, 3, 4, 5, 6], // Todos los días por defecto
 };
 
-const SETTINGS_DOC = "config/general";
-
 /**
  * Obtener la configuración actual desde Firestore (con fallback seguro a DEFAULT_SETTINGS)
  */

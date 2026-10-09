@@ -35,7 +35,7 @@ export interface Booking {
   instagramUser?: string;
   ownerAddress?: string;
   status: "pending" | "confirmed" | "cancelled" | "completed";
-  createdAt?: any;
+  createdAt?: unknown;
 }
 
 /**
@@ -47,7 +47,7 @@ export async function createBooking(
   const colRef = collection(db, "bookings");
 
   // Limpiar cualquier campo undefined para evitar errores de Firestore
-  const cleanData: Record<string, any> = {};
+  const cleanData: Record<string, unknown> = {};
   for (const [key, val] of Object.entries(bookingData)) {
     if (val !== undefined) {
       cleanData[key] = val;

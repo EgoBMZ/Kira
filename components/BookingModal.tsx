@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { X, Send, Phone, CheckCircle2, Sparkles, Calendar } from "lucide-react";
+import { X, Send, Phone, CheckCircle2 } from "lucide-react";
 
 import { createBooking } from "@/lib/bookings";
 

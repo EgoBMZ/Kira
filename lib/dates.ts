@@ -14,7 +14,8 @@ export function parseSafeDate(dateStr?: string, timeStr?: string): Date | null {
   const parts = cleanDate.split("-");
   if (parts.length !== 3) return null;
 
-  let [yearStr, monthStr, dayStr] = parts;
+  const [rawYear, monthStr, dayStr] = parts;
+  let yearStr = rawYear;
   // Si el año tiene más de 4 dígitos (ej. "102026" por autocompletado del navegador), tomamos los últimos 4
   if (yearStr.length > 4) {
     yearStr = yearStr.slice(-4);
@@ -46,7 +47,8 @@ export function sanitizeDateStr(rawDate: string): string {
   if (!rawDate) return "";
   const parts = rawDate.trim().split("-");
   if (parts.length === 3) {
-    let [y, m, d] = parts;
+    const [rawY, m, d] = parts;
+    let y = rawY;
     if (y.length > 4) {
       y = y.slice(-4);
     }

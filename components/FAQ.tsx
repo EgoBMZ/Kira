@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { HelpCircle, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);

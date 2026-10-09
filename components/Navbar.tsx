@@ -11,7 +11,6 @@ import {
   Clock,
   ArrowRight,
   ShoppingBag,
-  Sparkles,
 } from "lucide-react";
 
 interface NavbarProps {

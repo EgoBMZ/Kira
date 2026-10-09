@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Sparkles, ShoppingBag, Heart, Check, Phone } from "lucide-react";
+import { ShoppingBag } from "lucide-react";
 
 export default function LemonPupWear() {
   const [model, setModel] = useState<"Dog Mom" | "Dog Dad">("Dog Mom");

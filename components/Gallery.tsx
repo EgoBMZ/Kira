@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Sparkles, Maximize2, X, Heart } from "lucide-react";
+import { Sparkles, Maximize2, X } from "lucide-react";
 
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
