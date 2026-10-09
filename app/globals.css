@@ -1,26 +1,112 @@
 @import "tailwindcss";
 
+@theme {
+  --font-heading: var(--font-outfit), system-ui, sans-serif;
+  --font-sans: var(--font-plus-jakarta), system-ui, sans-serif;
+
+  --color-peach-50: #fffaf5;
+  --color-peach-100: #fdf2e9;
+  --color-peach-200: #fbeee6;
+  --color-peach-300: #f7d9c4;
+  --color-peach-400: #f3be98;
+  --color-peach-500: #ee9b6a;
+
+  --color-skycard-50: #f0f9ff;
+  --color-skycard-100: #e0f2fe;
+  --color-skycard-200: #bae6fd;
+  --color-skycard-300: #7dd3fc;
+  --color-skycard-600: #0284c7;
+
+  --color-husky-blue: #0284c7;
+  --color-husky-dark: #0f172a;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #fdfcfb;
+  --foreground: #18181b;
 }
 
 body {
-  background: var(--background);
+  font-family: var(--font-plus-jakarta), system-ui, -apple-system, sans-serif;
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: var(--font-outfit), system-ui, sans-serif;
+}
+
+/* Mobile UX soft card styles */
+.card-soft-peach {
+  background-color: #fdf2e9;
+  border-radius: 1.75rem;
+}
+
+.card-soft-sky {
+  background-color: #dbeafe;
+  border-radius: 1.75rem;
+}
+
+.card-soft-mint {
+  background-color: #e6f7f2;
+  border-radius: 1.75rem;
+}
+
+.card-soft-butter {
+  background-color: #fef9c3;
+  border-radius: 1.75rem;
+}
+
+.pill-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.pill-btn-dark {
+  background-color: #18181b;
+  color: #ffffff;
+}
+.pill-btn-dark:hover {
+  background-color: #27272a;
+  transform: translateY(-1px);
+}
+
+.pill-btn-sky {
+  background-color: #0284c7;
+  color: #ffffff;
+}
+.pill-btn-sky:hover {
+  background-color: #0369a1;
+  transform: translateY(-1px);
+}
+
+.pill-btn-outline {
+  border: 1.5px solid #e4e4e7;
+  background-color: #ffffff;
+  color: #18181b;
+}
+.pill-btn-outline:hover {
+  background-color: #f4f4f5;
+  border-color: #d4d4d8;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #fdf2e9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
 }

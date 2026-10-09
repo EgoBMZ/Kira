@@ -1,0 +1,54 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Funciones auxiliares de seguridad
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    // Super Administrador Inmutable Oficial
+    function isSuperAdmin() {
+      return isSignedIn() && request.auth.token.email.lower() == 'egobmz@gmail.com';
+    }
+
+    // Administrador Autorizado (Super Admin o correo listado en config/admins)
+    function isAdmin() {
+      return isSuperAdmin() || (
+        isSignedIn() && 
+        exists(/databases/$(database)/documents/config/admins) && 
+        request.auth.token.email.lower() in get(/databases/$(database)/documents/config/admins).data.admins
+      );
+    }
+
+    // 1. Configuración de Tarifas, Horarios y Aforo (config/general)
+    match /config/general {
+      // Lectura pública para que la calculadora web funcione a cualquier visitante móvil
+      allow read: if true;
+      // Solo administradores autenticados pueden modificar precios o bloquear días
+      allow write: if isAdmin();
+    }
+
+    // 2. Lista de Administradores Autorizados (config/admins)
+    match /config/admins {
+      // Solo usuarios autenticados pueden verificar roles
+      allow read: if isSignedIn();
+      // ÚNICAMENTE el Super Admin (egobmz@gmail.com) puede agregar o remover administradores
+      allow write: if isSuperAdmin();
+    }
+
+    // 3. Colección de Reservas (bookings)
+    match /bookings/{bookingId} {
+      // Cualquier tutor/cliente puede crear una reserva desde la web
+      allow create: if true;
+      // Solo administradores autorizados pueden ver, aprobar o cancelar reservas
+      allow read, update, delete: if isAdmin();
+    }
+
+    // Por defecto: Denegar cualquier otra operación no especificada
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
